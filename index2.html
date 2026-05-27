@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Brawl Stars Shop</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* Базовые стили под цвета Telegram (темная/светлая тема) */
+        body {
+            font-family: sans-serif;
+            background-color: var(--tg-theme-bg-color, #181818);
+            color: var(--tg-theme-text-color, #ffffff);
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+        }
+        .btn {
+            background-color: var(--tg-theme-button-color, #2481cc);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            border: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        .hidden { display: none; }
+        .card {
+            background-color: var(--tg-theme-secondary-bg-color, #2c2c2c);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: left;
+        }
+        .card h3 { margin-top: 0; text-align: center;}
+    </style>
+</head>
+<body>
+
+    <h2 id="header-title">Магазин Софта 🌟</h2>
+
+    <div id="main-menu">
+        <button class="btn" onclick="showSection('help')">Помощь 🆘</button>
+        <button class="btn" onclick="showSection('buy')">Покупка 🛒</button>
+    </div>
+
+    <div id="help" class="hidden">
+        <div class="card">
+            <h3>Часто задаваемые вопросы:</h3>
+            <p><b>1. Как получить софт?</b><br>Перейди в раздел «Покупка», выбери софт и выполни условия спонсоров.</p>
+            <p><b>2. Где инструкция?</b><br>Выдается вместе со ссылкой на скачивание.</p>
+            <p><i>Остались вопросы? Пиши админу: @Твой_Ник</i></p>
+        </div>
+        <button class="btn" onclick="showSection('main-menu')">⬅️ Назад</button>
+    </div>
+
+    <div id="buy" class="hidden">
+        <div class="card">
+            <h3>Софт Стандарт ⚡</h3>
+            <p style="text-align: center;">Для получения подпишись на наш канал!</p>
+            <button class="btn" onclick="openYoutube()">Перейти на YouTube 📺</button>
+        </div>
+
+        <div class="card">
+            <h3>Софт Премиум 🔥</h3>
+            <p style="text-align: center;">Для получения свяжитесь с админом: <b>@Твой_Ник</b></p>
+        </div>
+        
+        <button class="btn" onclick="showSection('main-menu')">⬅️ Назад</button>
+    </div>
+
+    <script>
+        // Инициализация Telegram Web App
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Открываем на весь экран
+        tg.ready();  // Сообщаем Telegram, что приложение готово
+
+        // Функция переключения между экранами
+        function showSection(id) {
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('help').classList.add('hidden');
+            document.getElementById('buy').classList.add('hidden');
+            
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        // Функция открытия ссылки на YouTube
+        function openYoutube() {
+            // Замени на свою ссылку
+            tg.openLink("https://www.youtube.com/@YOUR_SPONSOR_CHANNEL");
+        }
+    </script>
+</body>
+</html>
